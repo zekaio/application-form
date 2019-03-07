@@ -100,10 +100,6 @@ if($choose == "all"){
             ];
     }
 }
-if(count($arr)>0){
-    $re = "exist";
-}else{
-    $re = "none";
-}
-$result = ["result"=>$re,"error"=>$error,"arr"=>$arr];
+$Num = count($arr);
+$result = ["num"=>$Num,"error"=>$error,"arr"=>$arr];
 echo json_encode($result);}
