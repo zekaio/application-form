@@ -1,0 +1,34 @@
+body{
+    text-align: center;
+}
+
+
+
+.hide{
+    display: none;
+}
+
+select {
+    height: 4em;
+    width: 20em;
+}
+
+textarea{
+    resize: none;
+    width: 20em;
+    height: 3em;
+    border: 0.005em solid;
+}
+
+table{
+    margin:auto;
+    /* text-align: center; */
+}
+
+.result{
+    /* font-size: 120%; */
+    text-align: center;
+}
+.none{
+    margin:auto;
+}

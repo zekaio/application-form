@@ -1,0 +1,19 @@
+.title{
+    text-align: center;
+}
+.a{
+    position: relative;
+    /* left:20%; */
+    /* right: 20%; */
+    margin: 2.5% 40%;
+    text-align: center;
+    /* background-color: #ff9100; */
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+a{
+    text-decoration: none;
+}
+.totala{
+    margin-top: 10%;
+}

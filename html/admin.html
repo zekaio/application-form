@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+    <meta charset="utf8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <title>内部查询</title>
+    <script>
+        var system = {};
+        var p = navigator.platform;
+        system.win = p.indexOf("Win") == 0;
+        system.mac = p.indexOf("Mac") == 0;
+        system.x11 = p == "X11" || p.indexOf("Linux") == 0;
+        if (!(system.win || system.mac || system.xll)) {
+          window.onload = function(){
+            var tip = document.getElementById("tip");
+            tip.innerText = "建议横屏使用否则用户体验极差（";
+          }
+        }
+      </script>
+  </head>
+  <body>
+      <div><h1>内部查询</h1></div>
+      <div><p id="tip"></p></div>
+    <div>
+      <select id="select" onchange="Select()">
+        <option value="1" selected>所有信息</option>
+        <option value="2">按部门查询</option>
+        <option value="3">按姓名查询</option>
+        <option value="4">按手机号查询</option>
+      </select></br></br>
+    </div>
+
+    <div>
+      <select id="bumen" class="bumen hide">
+        <option value="0">技术部</option>
+        <option value="1">策划推广部</option>
+        <option value="2">人力资源部</option>
+        <option value="3">综合管理部</option>
+        <option value="4">视觉设计部</option>
+        <option value="5">综合新闻部</option>
+        <option value="6">外联部</option>
+        <option value="7">节目部</option>
+        <option value="8">视频部</option>
+        <option value="9">编辑部</option>
+        <option value="10">产品运营部（北校）</option>
+      </select>
+    </div>
+    <div>
+      <textarea
+        id="name"
+        class="textarea hide"
+        placeholder="请输入姓名"
+      ></textarea>
+    </div>
+    <div>
+      <textarea
+        id="phone"
+        class="textarea hide"
+        placeholder="请输入手机号"
+      ></textarea>
+    </div>
+    <div>
+    </br>
+      <input type="button" value="查询" id="search" class="input" onclick="search()"/>
+    </div>
+    <div id="result" class="result">
+      <table id="table">
+        <colgroup>
+          <col width="10%">
+          <col width="4%">
+          <col width="10%">
+          <col width="10%">
+          <col width="10%">
+          <col width="10%">
+          <col width="10%">
+          <col width="10%">
+          <col width="25%">
+        </colgroup>
+        <tr>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>学院</th>
+          <th>宿舍</th>
+          <th>年级</th>
+          <th>手机号</th>
+          <th>第一志愿</th>
+          <th>第二志愿</th>
+          <th>自我介绍</th>
+        </tr>
+      </table>
+    </div>
+  </br></br></br>
+    <div id="msg"></div>
+    <script type="text/javascript" src="/js/admin.js"></script>
+  </body>
+</html>
