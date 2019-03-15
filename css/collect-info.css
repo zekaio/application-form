@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  overflow: hidden;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* 背景 */
+.background {
+  position: fixed;
+  z-index: -100;
+  top: 0;
+  left: 0;
+}
+
+/* 滚动箭头 */
+.jiantou {
+  height: 5%;
+  width: 50%;
+  margin-left: auto;
+}
+
+/* 文字图片 */
+.Img {
+  max-height: 30px;
+  height: 3rem;
+  margin-top: 5%;
+  display: block;
+}
+.Imgsmall {
+  max-height: 30px;
+  height: 3rem;
+  margin-top: 5%;
+  display: block;
+}
+
+/* 单选框图片 */
+.choImg {
+  width: 3em;
+}
+
+/* 单选字体 */
+.font {
+  font-size: 1.5em;
+}
+
+/* 输入框 */
+textarea {
+  resize: none;
+  width: 100%;
+  border: 0;
+  font-size: 1.2em;
+  line-height: 2.4em;
+}
+
+.introTextarea {
+  line-height: 1.2em;
+}
+
+/* 设置输入框与图片距离 */
+.content {
+  margin-top: 2%;
+}
+
+/* 美化select */
+select {
+  height: 2em;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  font-size: 1em;
+  padding: 0px 10px;
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 0;
+  color: #333333;
+}
+
+/* 提交按钮 */
+.sub {
+  height: 45%;
+  width: 45%;
+}
+
+/* 居中 */
+.center {
+  text-align: center;
+}
+
+/* 错误信息 */
+.error {
+  font-size: 1.5em;
+  height: 50px;
+  color: red;
+}
+
+.fuck {
+  transition: all 1s;
+}
