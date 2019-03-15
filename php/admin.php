@@ -79,6 +79,7 @@ if($choose == "all"){
             "phone" => $row['phone'],
             "first" => $row['first'],
             "second" => $row['second'],
+            "adjust" => $row['adjust'],
             "intro" => $row['intro'],
         ];
         $t = $t + 1;
@@ -96,7 +97,8 @@ if($choose == "all"){
             "phone" => $array[$n][6],
             "first" => $array[$n][7],
             "second" => $array[$n][8],
-            "intro" =>$array[$n][9],
+            "adjust" => $array[$n][9],
+            "intro" =>$array[$n][10],
             ];
     }
 }

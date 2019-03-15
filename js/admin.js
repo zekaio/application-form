@@ -63,11 +63,11 @@ function search() {
       data = document.getElementById("phone").value;
       break;
   }
-  var fromdata = new FormData();
-  fromdata.append("choose", choose);
-  fromdata.append("data", data);
+  var formdata = new FormData();
+  formdata.append("choose", choose);
+  formdata.append("data", data);
   fetch("../php/admin.php", {
-    body: fromdata,
+    body: formdata,
     method: "POST"
   })
     .then(Response => Response.json())
@@ -114,6 +114,10 @@ function search() {
           var second = document.createElement("td");
           second.innerText = res.arr[i].second;
           tr.appendChild(second);
+          //调剂
+          var adjust = document.createElement("td");
+          adjust.innerText = res.arr[i].adjust;
+          tr.appendChild(adjust);
           //自我介绍
           var intro = document.createElement("td");
           intro.innerText = res.arr[i].intro;
