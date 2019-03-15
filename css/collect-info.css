@@ -40,12 +40,15 @@
 
 /* 单选框图片 */
 .choImg {
-  width: 3em;
+  width: 1.5em;
+  vertical-align:text-bottom;
+  /* max-width:px; */
 }
 
 /* 单选字体 */
 .font {
   font-size: 1.5em;
+  color: white;
 }
 
 /* 输入框 */
