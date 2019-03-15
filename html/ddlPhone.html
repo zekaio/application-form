@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>报名截止</title>
+    <script>
+            var system = {};
+            var p = navigator.platform;
+            system.win = p.indexOf("Win") == 0;
+            system.mac = p.indexOf("Mac") == 0;
+            system.x11 = p == "X11" || p.indexOf("Linux") == 0;
+            if (system.win || system.mac || system.xll) {
+              // window.location.href = 
+            }
+    </script>
+    <style>
+    .bg{
+        position:fixed;
+        z-index:-1;
+        top:0; left:0;
+    }
+    .body{
+        text-align:center;
+        position:relative;
+    }
+    .tips{
+        position:absolute;
+        left:18%; top:30%;
+        width:70%;
+    }
+    .tz{
+        position:absolute;
+        right:14%; top:23%;
+        height:20%;
+    }
+    .return{
+        position:absolute;
+        left:25%; bottom:30%;
+        width:50%;
+    }
+    </style>
+    <script>
+        function back(){
+            window.loaction.href="startPagePhone.html";
+        }
+        window.onload = function() {
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+            document.getElementById("bg").style.height=height+"px";
+            document.getElementById("bg").style.width=width+"px";
+            document.getElementById("body").style.height=height+"px";
+            document.getElementById("body").style.width=width+"px";
+        }
+        window.onresize=function(){
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+            document.getElementById("bg").style.height=height+"px";
+            document.getElementById("bg").style.width=width+"px";
+            document.getElementById("body").style.height=height+"px";
+            document.getElementById("body").style.width=width+"px";
+        }
+    </script>
+</head>
+<body>
+    <img id="bg" class="bg" src="bg.png" style="height:100%;width:100%"/>
+    <div id="body" class="body" style="height:100%;width:100%">
+        <img class="tips" src="tips.png">
+        <img class="tz" src="tz2.png">
+        <img class="return" src="return.png" onclick="back()"> 
+    </div>
+</body>
+</html>
