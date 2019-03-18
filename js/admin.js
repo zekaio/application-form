@@ -44,6 +44,7 @@ function search() {
     }
   }
   var data = "all";
+  var position = "";
   switch (choose) {
     case "all":
       data = "all";
@@ -52,7 +53,19 @@ function search() {
     case "bumen":
       var bsle = document.getElementById("bumen");
       var cho = parseInt(bsle.value);
-      data = bsle[cho].innerText;
+      if (cho == 0) {
+        data = "技术部";
+        position = "南校";
+      } else if (cho == 10) {
+        data = "技术部";
+        position = "北校";
+      } else if (cho == 11) {
+        data = "产品运营部";
+        position = "北校";
+      } else {
+        var data = bsle[cho].innerText;
+        position = "";
+      }
       break;
 
     case "name":
@@ -66,6 +79,7 @@ function search() {
   var formdata = new FormData();
   formdata.append("choose", choose);
   formdata.append("data", data);
+  formdata.append("position",position);
   fetch("../php/admin.php", {
     body: formdata,
     method: "POST"

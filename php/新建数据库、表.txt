@@ -1,0 +1,17 @@
+CREATE DATABASE application-form default character set utf8mb4 collate utf8mb4_unicode_ci;
+
+CREATE TABLE `info` (
+     id int auto_increment primary key not null, 
+    name varchar(20) not null,
+    sex char(2) not null,
+    college varchar(20) not null,
+    dorm varchar(15) not null,
+    grade varchar(10) not null,
+    phone varchar(20) not null,
+    first char(10) not null,
+    second char(10) not null,
+    adjust char(2) not null,
+    intro text,
+    firstD char(10) not null,
+    secondD char(10) not null,
+    position char(2))CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;

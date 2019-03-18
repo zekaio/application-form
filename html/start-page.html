@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>首页</title>
+    <style>
+      .bg {
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+      }
+      .body {
+        text-align: center;
+        position: relative;
+      }
+      .new {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+      }
+      .btn1 {
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        width: 50%;
+      }
+      .btn2 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        width: 50%;
+      }
+    </style>
+    <script>
+      function introduction() {
+        window.location.href = "introduction.html";
+      }
+      function collectinfo() {
+        window.location.href = "collect-info.html";
+      }
+      window.onload = function() {
+        var height = document.documentElement.clientHeight || document.documentElement.offsetHeight;
+        var width = document.documentElement.clientWidth || document.documentElement.offsetWidth;
+        var bodyHeight = parseInt(document.getElementById("body").clientHeight || document.getElementById("body").offsetHeight);
+        var num =(height - bodyHeight)/2;
+        if(num>0){
+            document.getElementById("body").style.marginTop = num + "px";
+        }
+      };
+      window.onresize = function() {
+        var height = document.documentElement.clientHeight || document.documentElement.offsetHeight;
+        var width = document.documentElement.clientWidth || document.documentElement.offsetWidth;
+        var bodyHeight = parseInt(document.getElementById("body").clientHeight || document.getElementById("body").offsetHeight);
+        var num =(height - bodyHeight)/2;
+        if(num>0){
+            document.getElementById("body").style.marginTop = num + "px";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <img id="bg" class="bg" src="../img/background.jpg" />
+    <div id="body" class="body">
+      <img class="new" src="../img/主页标题.png" />
+      <img class="btn1" src="../img/部门介绍.png" onclick="introduction()" />
+      <img class="btn2" src="../img/点击报名.png" onclick="collectinfo()" />
+    </div>
+  </body>
+</html>

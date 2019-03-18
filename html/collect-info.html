@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/collect-info.css" />
+    <title>报名页面</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="../js/jquery-3.3.1.min.js" type="text/javascript"><\/script>'
+        );
+    </script>
+  </head>
+  <body>
+    <!-- 背景图 -->
+    <img
+      class="background"
+      id="background"
+      src="../img/background.jpg"
+      style="height:100%;width:100%"
+    />
+    <!-- 返回首页 -->
+    <img id="back" src="../img/返回.png" onclick="back()" class="back" />
+
+    <div class="body" id="body">
+      <!-- 姓名 -->
+      <div id="name" class="name">
+        <img class="Img" src="../img/姓名.png" />
+        <div class="content">
+          <input
+            type="text"
+            placeholder="请输入你的姓名"
+            id="nameText"
+            class="text"
+          />
+        </div>
+      </div>
+
+      <!-- 性别 -->
+      <div id="sex" class="sex">
+        <img class="Img" src="../img/性别.png" />
+        <div class="content">
+          <span class="font">男</span>
+          <img
+            src="../img/unchecked.png"
+            id="boy"
+            class="choImg"
+            onclick="Boy()"
+          />&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="font">女</span>
+          <img
+            src="../img/unchecked.png"
+            id="girl"
+            class="choImg"
+            onclick="Girl()"
+          />
+        </div>
+      </div>
+
+      <!-- 宿舍 -->
+      <div id="dorm" class="dorm">
+        <img class="Img" src="../img/宿舍.png" />
+        <div class="content">
+          <input
+            type="text"
+            id="dormText"
+            class="text"
+            placeholder="如C1-111"
+          />
+        </div>
+      </div>
+
+      <!-- 手机号 -->
+      <div id="phone" class="phone">
+        <img class="Img" src="../img/手机.png" />
+        <div class="content">
+          <input
+            type="text"
+            id="phoneText"
+            class="text"
+            placeholder="请输入11位手机号"
+            maxlength="11"
+          />
+        </div>
+      </div>
+
+      <!-- 学院 -->
+      <div id="college" class="college">
+        <img class="Img" src="../img/学院.png" />
+        <div class="content">
+          <select id="collegeSelect" class="collegeSelect" onchange="Select()">
+            <option value="0">请选择你的学院</option>
+            <option value="1">机械与汽车工程学院</option>
+            <option value="2">建筑学院</option>
+            <option value="3">土木与交通学院</option>
+            <option value="4">电力学院</option>
+            <option value="5">电子与信息学院</option>
+            <option value="6">自动化科学与工程学院</option>
+            <option value="7">材料科学与工程学院</option>
+            <option value="8">化学与化工学院</option>
+            <option value="9">轻工科学与工程学院</option>
+            <option value="10">食品科学与工程学院</option>
+            <option value="11">数学学院</option>
+            <option value="12">物理与光电学院</option>
+            <option value="13">工商管理学院</option>
+            <option value="14">公共管理学院</option>
+            <option value="15">外国语学院</option>
+            <option value="16">体育学院</option>
+            <option value="17">马克思主义学院</option>
+            <option value="18">计算机科学与工程学院</option>
+            <option value="19">软件学院</option>
+            <option value="20">环境与能源学院</option>
+            <option value="21">生物科学与工程学院</option>
+            <option value="22">新闻与传播学院</option>
+            <option value="23">设计学院</option>
+            <option value="24">法学院</option>
+            <option value="25">经济与贸易学院</option>
+            <option value="26">艺术学院</option>
+            <option value="27">医学院</option>
+            <option value="28">国际教育学院</option>
+            <option value="29">生物医学科学与工程学院</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 年级 -->
+      <div id="grade" class="grade">
+        <img class="Img" src="../img/年级.png" />
+        <div class="content">
+          <span class="font">大一</span>
+          <img
+            src="../img/unchecked.png"
+            id="gradeOne"
+            class="choImg"
+            onclick="GradeOne()"
+          />&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="font">大二</span>
+          <img
+            src="../img/unchecked.png"
+            id="gradeTwo"
+            class="choImg"
+            onclick="GradeTwo()"
+          />
+        </div>
+      </div>
+
+      <!-- 第一志愿 -->
+      <div id="first" class="first">
+        <img class="Img" src="../img/第一志愿.png" />
+        <div class="content">
+          <select id="firstSelect" class="ban" disabled="disabled">
+            <option value="0">请选择你想去的部门</option>
+            <option value="1" class="daima">技术部-代码组</option>
+            <option value="2" class="sheji">技术部-设计组</option>
+            <option value="3" class="beijishu">技术部</option>
+            <option value="4">策划推广部</option>
+            <option value="5">编辑部-原创写手</option>
+            <option value="6">编辑部-摄影</option>
+            <option value="7">编辑部-可视化设计</option>
+            <option value="8">视觉设计部</option>
+            <option value="9">视频部-策划导演</option>
+            <option value="10">视频部-摄影摄像</option>
+            <option value="11">视频部-剪辑特效</option>
+            <option value="12">外联部</option>
+            <option value="13">节目部-国语组</option>
+            <option value="14">节目部-英语组</option>
+            <option value="15">节目部-粤语组</option>
+            <option value="16">人力资源部</option>
+            <option value="17">综合管理部-行政管理</option>
+            <option value="18">综合管理部-物资财政</option>
+            <option value="19">综合管理部-撰文记者</option>
+            <option value="20">综合管理部-摄影记者</option>
+            <option value="21" class="chanpin">产品运营部</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 第二志愿 -->
+      <div id="second" class="first">
+        <img class="Img" src="../img/第二志愿.png" />
+        <div class="content">
+          <select id="secondSelect" class="ban" disabled="disabled">
+            <option value="0">请选择你想去的部门（选填）</option>
+            <option value="1" class="daima">技术部-代码组</option>
+            <option value="2" class="sheji">技术部-设计组</option>
+            <option value="3" class="beijishu">技术部（北校）</option>
+            <option value="4">策划推广部</option>
+            <option value="5">编辑部-原创写手</option>
+            <option value="6">编辑部-摄影</option>
+            <option value="7">编辑部-可视化设计</option>
+            <option value="8">视觉设计部</option>
+            <option value="9">视频部-策划导演</option>
+            <option value="10">视频部-摄影摄像</option>
+            <option value="11">视频部-剪辑特效</option>
+            <option value="12">外联部</option>
+            <option value="13">节目部-国语组</option>
+            <option value="14">节目部-英语组</option>
+            <option value="15">节目部-粤语组</option>
+            <option value="16">人力资源部</option>
+            <option value="17">综合管理部-行政管理</option>
+            <option value="18">综合管理部-物资财政</option>
+            <option value="19">综合管理部-撰文记者</option>
+            <option value="20">综合管理部-摄影记者</option>
+            <option value="21" class="chanpin">产品运营部（北校）</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 调剂 -->
+      <div id="adjust" class="adjust">
+        <img class="Img" src="../img/调剂.png" />
+        <div class="content">
+          <span class="font">是</span>
+          <img
+            src="../img/unchecked.png"
+            id="Yes"
+            class="choImg"
+            onclick="Yes()"
+          />&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="font">否</span>
+          <img
+            src="../img/unchecked.png"
+            id="No"
+            class="choImg"
+            onclick="No()"
+          />
+        </div>
+      </div>
+
+      <!-- 自我介绍 -->
+      <div id="intro">
+        <img class="Img" src="../img/个人介绍.png" />
+        <div class="content">
+          <textarea
+            id="introText"
+            class="introTextarea"
+            placeholder="50字以内（选填）"
+            maxlength="50"
+            rows="6"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- 错误信息 -->
+      <div class="err center">
+        <div id="error" class="error"></div>
+      </div>
+
+      <!-- 提交按钮 -->
+      <div class="center">
+        <img src="../img/提交.png" onclick="Submit()" id="sub" class="sub" />
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="../js/collect-info.js"></script>
+  </body>
+</html>

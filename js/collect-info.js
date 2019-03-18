@@ -1,51 +1,3 @@
-window.onload = function() {
-  var height = document.documentElement.clientHeight;
-  var width = document.documentElement.clientWidth;
-  document.getElementById("background").style.height = height + "px";
-  document.getElementById("background").style.width = width + "px";
-  window.twoHeight =
-    parseInt(document.getElementById("two").clientHeight || o.offsetHeight) +
-    50;
-  var MarginTop = (parseInt(height) - parseInt(window.twoHeight)) / 2;
-  if (MarginTop > 0) {
-    document.getElementById("body").style.marginTop = MarginTop + "px";
-  }
-  document.getElementById("body").style.height = window.twoHeight + "px";
-  document.getElementById("body").style.width = 0.8 * width + "px";
-  document.getElementById("fuck").style.height = window.twoHeight + "px";
-  document.getElementById("one").style.height = window.twoHeight + "px";
-  document.getElementById("one").style.width = 0.8 * width + "px";
-  document.getElementById("two").style.height = window.twoHeight + "px";
-  document.getElementById("two").style.width = 0.8 * width + "px";
-};
-window.onresize = function() {
-  if (document.activeElement.tagName != "TEXTAREA") {
-    var height = document.documentElement.clientHeight;
-    var width = document.documentElement.clientWidth;
-    document.getElementById("background").style.height = height + "px";
-    document.getElementById("background").style.width = width + "px";
-    document.getElementById("body").style.height = window.twoHeight + "px";
-    document.getElementById("body").style.width = 0.8 * width + "px";
-    document.getElementById("fuck").style.height = window.twoHeight + "px";
-    document.getElementById("one").style.height = window.twoHeight + "px";
-    document.getElementById("one").style.width = 0.8 * width + "px";
-    document.getElementById("two").style.height = window.twoHeight + "px";
-    document.getElementById("two").style.width = 0.8 * width + "px";
-  }
-};
-var one = document.getElementById("one");
-var two = document.getElementById("two");
-function Next() {
-  if (document.activeElement.tagName != "TEXTAREA") {
-    document.getElementById("fuck").style.marginTop = -window.twoHeight + "px";
-  }
-}
-function Last() {
-  if (document.activeElement.tagName != "TEXTAREA") {
-    document.getElementById("fuck").style.marginTop = 0 + "px";
-  }
-}
-
 var Sex = "undefined";
 var Grade = "undefined";
 var Adjust = "undefined";
@@ -96,10 +48,13 @@ var collegeSelect = document.getElementById("collegeSelect");
 var ban = document.getElementsByClassName("ban");
 var firstSelect = document.getElementById("firstSelect");
 var secondSelect = document.getElementById("secondSelect");
-var chanpin = document.getElementById("chanpin");
 var sub = document.getElementById("sub");
 var Error = document.getElementById("error");
-
+var chanpin = document.getElementsByClassName("chanpin");
+var daima = document.getElementsByClassName("daima");
+var sheji = document.getElementsByClassName("sheji");
+var beijishu = document.getElementsByClassName("beijishu");
+var position;
 //返回首页
 function back() {
   window.location.href = "start-page.html";
@@ -107,25 +62,49 @@ function back() {
 
 //根据选择学院决定显示南北校技术部
 function Select() {
+  $("#firstSelect").val("0");
+  $("#secondSelect").val("0");
+  var i = 0;
   var op = collegeSelect.value;
   if (parseInt(op) == 0) {
-    ban[0].disabled = true;
-    ban[1].disabled = true;
+    for (i; i < 2; i++) {
+      ban[i].disabled = true;
+    }
   } else if (parseInt(op) > 0 && parseInt(op) <= 17) {
-    ban[0].disabled = false;
-    ban[1].disabled = false;
-    chanpin.style.display = "inline";
+    for (i; i < 2; i++) {
+      ban[i].disabled = false;
+      chanpin[i].style.display = "inline";
+      beijishu[i].style.display = "inline";
+      daima[i].style.display = "none";
+      sheji[i].style.display = "none";
+      position = "北校";
+    }
   } else {
-    ban[0].disabled = false;
-    ban[1].disabled = false;
-    chanpin.style.display = "none";
+    for (i; i < 2; i++) {
+      ban[i].disabled = false;
+      chanpin[i].style.display = "none";
+      beijishu[i].style.display = "none";
+      daima[i].style.display = "inline";
+      sheji[i].style.display = "inline";
+      position = "南校";
+    }
   }
+}
+
+//截取部门
+function Cut(string) {
+  var arr = string.split("-");
+  if (!arr[1]) {
+    arr[1] = "";
+  }
+  return arr;
 }
 
 var Disabled = "false";
 //提交
 function Submit() {
   if (Disabled == "false") {
+    document.getElementById("error").innerText = "";
     var Name = document.getElementById("nameText").value;
 
     var ColSel = document.getElementById("collegeSelect");
@@ -145,9 +124,6 @@ function Submit() {
     var Second = SecSel.options[SecIndex].text;
 
     var Intro = document.getElementById("introText").value;
-    if (Second == "请选择你想去的部门（选填）") {
-      Second = "";
-    }
 
     //检验手机号是否是1开头
     var check = parseInt(Phone / 10000000000);
@@ -166,6 +142,19 @@ function Submit() {
       document.getElementById("error").innerText = "手机号填写错误";
     } else {
       Disabled = "true";
+      if (Second == "请选择你想去的部门（选填）") {
+        Second = "";
+        var SecondD = "";
+        var SecondG = "";
+      } else {
+        var a = Cut(Second);
+        var SecondD = a[0];
+        var SecondG = a[1];
+      }
+      var b = Cut(First);
+      var FirstD = b[0];
+      var FirstG = b[1];
+
       var data = new FormData();
       data.append("name", Name);
       data.append("sex", Sex);
@@ -174,10 +163,12 @@ function Submit() {
       data.append("grade", Grade);
       data.append("phone", Phone);
       data.append("first", First);
+      data.append("firstD", FirstD);
       data.append("second", Second);
+      data.append("secondD", SecondD);
       data.append("adjust", Adjust);
       data.append("intro", Intro);
-
+      data.append("position",position);
       fetch("../php/sendData.php", {
         body: data,
         method: "POST"
@@ -185,8 +176,7 @@ function Submit() {
         .then(Respone => Respone.json())
         .then(res => {
           if (res.error == 0) {
-            // window.location.href="success_page.html";
-            document.getElementById("error").innerText = "报名成功";
+            window.location.href = "success.html";
           } else {
             document.getElementById("error").innerText = "报名出错，请稍后再试";
             sub.disabled = false;

@@ -4,9 +4,8 @@
 }
 
 .body {
-  overflow: hidden;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 /* 背景 */
@@ -15,58 +14,52 @@
   z-index: -100;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100vh;
 }
 
 /* 滚动箭头 */
 .jiantou {
-  height: 5%;
-  width: 50%;
+  width: 20%;
   margin-left: auto;
 }
 
 /* 文字图片 */
 .Img {
-  max-height: 30px;
-  height: 3rem;
+  width: 20%;
   margin-top: 5%;
-  display: block;
+  vertical-align: text-bottom;
 }
 .Imgsmall {
-  max-height: 30px;
-  height: 3rem;
+  width: 30%;
   margin-top: 5%;
-  display: block;
+  vertical-align: text-bottom;
 }
 
 /* 单选框图片 */
 .choImg {
-  width: 1.5em;
-  vertical-align:text-bottom;
-  /* max-width:px; */
+  width: 1.2em;
+  vertical-align: text-bottom;
 }
 
 /* 单选字体 */
 .font {
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: white;
 }
 
-/* 输入框 */
-textarea {
+/* 自我介绍输入框 */
+.introTextarea {
   resize: none;
   width: 100%;
   border: 0;
-  font-size: 1.2em;
-  line-height: 2.4em;
-}
-
-.introTextarea {
-  line-height: 1.2em;
+  font-size: 1.4em;
+  line-height:1.4em;
 }
 
 /* 设置输入框与图片距离 */
 .content {
-  margin-top: 2%;
+  display: inline;
 }
 
 /* 美化select */
@@ -76,14 +69,15 @@ select {
   appearance: none;
   border: none;
   font-size: 1em;
-  padding: 0px 10px;
-  display: block;
-  width: 100%;
+  padding: 0 1em;
+  width: 74.10074074074074%;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background-color: #ffffff;
   border: 0;
   color: #333333;
+  border-radius: 1em;
+  
 }
 
 /* 提交按钮 */
@@ -106,4 +100,23 @@ select {
 
 .fuck {
   transition: all 1s;
+}
+
+.back {
+  margin-top: 3%;
+  margin-left: 3%;
+  width: 5%;
+}
+
+/* 输入框 */
+.text {
+  font-size: 1.2em;
+  width: 65%;
+  border: 0;
+  height: 1.6em;
+  border-radius: 0.8em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+
+
 }

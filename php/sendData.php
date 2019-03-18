@@ -20,40 +20,18 @@ if(!$conn){
     $second = $_POST['second'];
     $adjust = $_POST['adjust'];
     $intro = $_POST['intro'];
-    // echo $name;
-    // echo $sex;
-    // echo $college;
-    // echo $dorm;
-    // echo $grade;
-    // echo $phone;
-    // echo $first;
-    // echo $second;
-    // echo $intro;
-//     $sql = "INSERT INTO `info` (`name`,`sex`) VALUES ('kaikai','kaikai')";
-//     // $db->Query($sql);
-//     // $mysqli->query($sql);
-
-
-//     $stmt = $mysqli->prepare("INSERT INTO info (`name`, `sex`, `college`) VALUES (?, ?, ?)");
-//     $stmt->bind_param("sss",$name,$sex,$cllege);
- 
-// // 设置参数并执行
-
-// $stmt->execute();
-// $stmt->close();
-// $error = 0;
-// }
-
-    $query = "INSERT INTO info (`name`,`sex`,`college`,`dorm`,`grade`,`phone`,`first`,`second`,`adjust`,`intro`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    $firstD = $_POST['firstD'];
+    $secondD = $_POST['secondD'];
+    $position = $_POST['position'];
+    $query = "INSERT INTO info (`name`,`sex`,`college`,`dorm`,`grade`,`phone`,`first`,`second`,`adjust`,`intro`,`firstD`,`secondD`,`position`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->stmt_init();
     if(!$stmt->prepare($query)){
         $error = 2;
     }else{
-        $stmt->bind_param("ssssssssss",$name,$sex,$college,$dorm,$grade,$phone,$first,$second,$adjust,$intro);
+        $stmt->bind_param("sssssssssssss",$name,$sex,$college,$dorm,$grade,$phone,$first,$second,$adjust,$intro,$firstD,$secondD,$position);
         $stmt->execute();
         $stmt->close();
         $error = 0;
-
     }
 }
 $result = ["error"=>$error];

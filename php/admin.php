@@ -11,6 +11,7 @@ $error = 0;
 $mysqli = $db->Conn();
 $choose = $_POST['choose'];
 $data = $_POST['data'];
+$position = $_POST['position'];
 $arr = array();$array = array();
 $t = 0;$i = 0;
 switch($choose){
@@ -19,20 +20,36 @@ switch($choose){
         $res = $db->Query($sql);
         break;
     case "bumen":
-        $query = "SELECT * FROM info WHERE `first`=? OR `second`=?";
-        $stmt = $mysqli->stmt_init();
-        if(!$stmt->prepare($query)){
-            $error = 2;
-        }else{
-            $stmt->bind_param("ss",$data,$data);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            while ($row = $result->fetch_array(MYSQLI_NUM)){
-                $array[$i] = $row;
-                $i = $i+1;
+        if($position == ""){
+            $query = "SELECT * FROM info WHERE `firstD`=? OR `secondD`=?";
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($query)){
+                $error = 2;
+            }else{
+                $stmt->bind_param("ss",$data,$data);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_array(MYSQLI_NUM)){
+                    $array[$i] = $row;
+                    $i = $i+1;
+                }
             }
-        $stmt->close();
+        }else{
+            $query = "SELECT * FROM info WHERE (`firstD`=? OR `secondD`=?) AND `position`=?";
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($query)){
+                $error = 2;
+            }else{
+                $stmt->bind_param("sss",$data,$data,$position);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_array(MYSQLI_NUM)){
+                    $array[$i] = $row;
+                    $i = $i+1;
+                }
+            }
         }
+        $stmt->close();
         break;
     case "name":
         $query = "SELECT * FROM info WHERE `name`=?";

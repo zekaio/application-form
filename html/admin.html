@@ -17,7 +17,7 @@
         if (!(system.win || system.mac || system.xll)) {
           window.onload = function(){
             var tip = document.getElementById("tip");
-            tip.innerText = "建议横屏使用否则用户体验极差（";
+            tip.innerText = "手机建议横屏使用否则用户体验极差（";
           }
         }
       </script>
@@ -25,6 +25,7 @@
   <body>
       <div><h1>内部查询</h1></div>
       <div><p id="tip"></p></div>
+      <div><p>（志愿中单技术部指北校技术部）</p></div>
     <div>
       <select id="select" onchange="Select()">
         <option value="1" selected>所有信息</option>
@@ -36,7 +37,7 @@
 
     <div>
       <select id="bumen" class="bumen hide">
-        <option value="0">技术部</option>
+        <option value="0">技术部（南校）</option>
         <option value="1">策划推广部</option>
         <option value="2">人力资源部</option>
         <option value="3">综合管理部</option>
@@ -46,7 +47,8 @@
         <option value="7">节目部</option>
         <option value="8">视频部</option>
         <option value="9">编辑部</option>
-        <option value="10">产品运营部（北校）</option>
+        <option value="10">技术部（北校）</option>
+        <option value="11">产品运营部（北校）</option>
       </select>
     </div>
     <div>

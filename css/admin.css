@@ -1,34 +1,30 @@
-body{
-    text-align: center;
+body {
+  text-align: center;
 }
 
-
-
-.hide{
-    display: none;
+.hide {
+  display: none;
 }
 
 select {
-    height: 4em;
-    width: 20em;
+  height: 4em;
+  width: 20em;
 }
 
-textarea{
-    resize: none;
-    width: 20em;
-    height: 3em;
-    border: 0.005em solid;
+textarea {
+  resize: none;
+  width: 20em;
+  height: 3em;
+  border: 0.005em solid;
 }
 
-table{
-    margin:auto;
-    /* text-align: center; */
+table {
+  margin: auto;
 }
 
-.result{
-    /* font-size: 120%; */
-    text-align: center;
+.result {
+  text-align: center;
 }
-.none{
-    margin:auto;
+.none {
+  margin: auto;
 }

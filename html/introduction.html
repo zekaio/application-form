@@ -5,7 +5,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="../css/introductionPhone.css"
+      href="../css/introduction.css"
     />
 
     <meta charset="UTF-8" />
@@ -14,16 +14,6 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
     />
     <title>部门介绍</title>
-    <script>
-      var system = {};
-      var p = navigator.platform;
-      system.win = p.indexOf("Win") == 0;
-      system.mac = p.indexOf("Mac") == 0;
-      system.x11 = p == "X11" || p.indexOf("Linux") == 0;
-      if (system.win || system.mac || system.xll) {
-        // window.location.href = "introductionPC.html";
-      }
-    </script>
   </head>
   <body>
     <!-- 背景图 -->
@@ -31,8 +21,8 @@
       class="background"
       id="background"
       src="../img/background.jpg"
-      style="height:100%;width:100%"
     />
+
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div id="1" class="swiper-slide">
@@ -167,18 +157,26 @@
           </div>
         </div>
       </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
-    <div class="swiper-pagination"></div>
-    <div class="tip">
-      <div class="firstTip">这已经是第一个部门了</div>
-      <div class="lastTip">这已经是最后一个部门了</div>
-    </div>
+
+    <div class="pare"><img src="../img/点击报名.png" class="click" onclick="Skip()"></div>
+    <div class="pare down"><img src="../img/返回主页.png" class="click" onclick="Back()"></div>
+
+
     <script src="../swiper-4.5.0/dist/js/swiper.min.js"></script>
-    <script>
+    <script type="text/javascript" src="../js/introduction.js"></script>
+     <script>
       var swiper = new Swiper(".swiper-container", {
         pagination: {
           el: ".swiper-pagination"
-        }
+        },
+        navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
       });
     </script>
   </body>
