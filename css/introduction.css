@@ -1,42 +1,44 @@
 .hide {
-    display: none;
-  }
-  
-  /* 背景 */
+  display: none;
+}
+
+/* 背景 */
 .background {
-    position: fixed;
-    z-index: -100;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-  }
-  
-  .title {
-    margin: 5% auto 0 auto;
-    text-align: center;
-  }
-  .intro{
+  position: fixed;
+  z-index: -100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.title {
+  margin: 5% auto 0 auto;
+  text-align: center;
+}
+.intro {
   padding: 0 10%;
-  }
-  .intro > p{
-      font-size: 1.2em;
-  }
-  
-.click{
-    width: 40%;
-    margin:auto;
 }
-.pare{
-    text-align: center;
+.intro > p {
+  font-size: 1.2em;
+  color: rgb(0, 0, 0);
 }
-.back{
-    top:3%;
-    left: 3%;
-    width: 20px;
-  }
+h1{
+  color:black;
+}
+.click {
+  width: 40%;
+  margin: auto;
+}
+.pare {
+  text-align: center;
+}
+.back {
+  top: 3%;
+  left: 3%;
+  width: 20px;
+}
 
-  .down{
-      margin-top: 5%;
-  }
-
+.down {
+  margin-top: 5%;
+}

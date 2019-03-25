@@ -1,48 +1,5 @@
-var Sex = "undefined";
-var Grade = "undefined";
-var Adjust = "undefined";
-function Boy() {
-  if (Sex != "男") {
-    document.getElementById("boy").src = "../img/checked.png";
-    document.getElementById("girl").src = "../img/unchecked.png";
-    Sex = "男";
-  }
-}
-function Girl() {
-  if (Sex != "女") {
-    document.getElementById("girl").src = "../img/checked.png";
-    document.getElementById("boy").src = "../img/unchecked.png";
-    Sex = "女";
-  }
-}
-function GradeOne() {
-  if (Grade != "大一") {
-    document.getElementById("gradeOne").src = "../img/checked.png";
-    document.getElementById("gradeTwo").src = "../img/unchecked.png";
-    Grade = "大一";
-  }
-}
-function GradeTwo() {
-  if (Grade != "大二") {
-    document.getElementById("gradeTwo").src = "../img/checked.png";
-    document.getElementById("gradeOne").src = "../img/unchecked.png";
-    Grade = "大二";
-  }
-}
-function Yes() {
-  if (Adjust != "是") {
-    document.getElementById("Yes").src = "../img/checked.png";
-    document.getElementById("No").src = "../img/unchecked.png";
-    Adjust = "是";
-  }
-}
-function No() {
-  if (Adjust != "否") {
-    document.getElementById("No").src = "../img/checked.png";
-    document.getElementById("Yes").src = "../img/unchecked.png";
-    Adjust = "否";
-  }
-}
+var winHeight = $(window).height();
+$("#background").height(winHeight);
 
 var collegeSelect = document.getElementById("collegeSelect");
 var ban = document.getElementsByClassName("ban");
@@ -55,6 +12,7 @@ var daima = document.getElementsByClassName("daima");
 var sheji = document.getElementsByClassName("sheji");
 var beijishu = document.getElementsByClassName("beijishu");
 var position;
+
 //返回首页
 function back() {
   window.location.href = "start-page.html";
@@ -91,6 +49,19 @@ function Select() {
   }
 }
 
+//获取选中单选框的值
+function Checked(name) {
+  var radios = document.getElementsByName(name);
+  for (var i = 0; i < radios.length; ++i) {
+    if (radios[i].checked) {
+      return radios[i].value;
+    }
+    if (i == radios.length - 1) {
+      return "undefined";
+    }
+  }
+}
+
 //截取部门
 function Cut(string) {
   var arr = string.split("-");
@@ -107,9 +78,13 @@ function Submit() {
     document.getElementById("error").innerText = "";
     var Name = document.getElementById("nameText").value;
 
+    var Sex = Checked("Sex");
+
     var ColSel = document.getElementById("collegeSelect");
     var ColIndex = ColSel.selectedIndex;
     var College = ColSel.options[ColIndex].text;
+
+    var Grade = Checked("Grade");
 
     var Dorm = document.getElementById("dormText").value;
 
@@ -125,6 +100,7 @@ function Submit() {
 
     var Intro = document.getElementById("introText").value;
 
+    var Adjust = Checked("Adjust");
     //检验手机号是否是1开头
     var check = parseInt(Phone / 10000000000);
     if (
@@ -142,46 +118,73 @@ function Submit() {
       document.getElementById("error").innerText = "手机号填写错误";
     } else {
       Disabled = "true";
-      if (Second == "请选择你想去的部门（选填）") {
-        Second = "";
-        var SecondD = "";
-        var SecondG = "";
-      } else {
-        var a = Cut(Second);
-        var SecondD = a[0];
-        var SecondG = a[1];
-      }
-      var b = Cut(First);
-      var FirstD = b[0];
-      var FirstG = b[1];
 
-      var data = new FormData();
-      data.append("name", Name);
-      data.append("sex", Sex);
-      data.append("college", College);
-      data.append("dorm", Dorm);
-      data.append("grade", Grade);
-      data.append("phone", Phone);
-      data.append("first", First);
-      data.append("firstD", FirstD);
-      data.append("second", Second);
-      data.append("secondD", SecondD);
-      data.append("adjust", Adjust);
-      data.append("intro", Intro);
-      data.append("position",position);
-      fetch("../php/sendData.php", {
-        body: data,
+      //判断是否已经提交信息
+      var check = true;
+      var checkData = new FormData();
+      checkData.append("name", Name);
+      checkData.append("phone", Phone);
+
+      fetch("../php/check.php", {
+        body: checkData,
         method: "POST"
       })
-        .then(Respone => Respone.json())
+        .then(Response => Response.json())
         .then(res => {
-          if (res.error == 0) {
-            window.location.href = "success.html";
-          } else {
+          if (res.error == 1) {
             document.getElementById("error").innerText = "报名出错，请稍后再试";
-            sub.disabled = false;
+          } else {
+            if (res.msg == "true") {
+              document.getElementById("error").innerText = "你已经报名过了";
+              check = false;
+              Disabled = "false";
+            }
           }
         });
+
+      if (check) {
+        if (Second == "请选择你想去的部门（选填）") {
+          Second = "";
+          var SecondD = "";
+          var SecondG = "";
+        } else {
+          var a = Cut(Second);
+          var SecondD = a[0];
+          var SecondG = a[1];
+        }
+        var b = Cut(First);
+        var FirstD = b[0];
+        var FirstG = b[1];
+
+        var data = new FormData();
+        data.append("name", Name);
+        data.append("sex", Sex);
+        data.append("college", College);
+        data.append("dorm", Dorm);
+        data.append("grade", Grade);
+        data.append("phone", Phone);
+        data.append("first", First);
+        data.append("firstD", FirstD);
+        data.append("second", Second);
+        data.append("secondD", SecondD);
+        data.append("adjust", Adjust);
+        data.append("intro", Intro);
+        data.append("position", position);
+        fetch("../php/sendData.php", {
+          body: data,
+          method: "POST"
+        })
+          .then(Respone => Respone.json())
+          .then(res => {
+            if (res.error == 0) {
+              window.location.href = "success.html";
+            } else {
+              document.getElementById("error").innerText =
+                "报名出错，请稍后再试";
+              sub.disabled = false;
+            }
+          });
+      }
     }
   }
 }

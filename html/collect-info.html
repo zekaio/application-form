@@ -21,7 +21,7 @@
     <img
       class="background"
       id="background"
-      src="../img/background.jpg"
+      src="../img/background.png"
       style="height:100%;width:100%"
     />
     <!-- 返回首页 -->
@@ -43,28 +43,25 @@
 
       <!-- 性别 -->
       <div id="sex" class="sex">
-        <img class="Img" src="../img/性别.png" />
-        <div class="content">
-          <span class="font">男</span>
-          <img
-            src="../img/unchecked.png"
-            id="boy"
-            class="choImg"
-            onclick="Boy()"
-          />&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="font">女</span>
-          <img
-            src="../img/unchecked.png"
-            id="girl"
-            class="choImg"
-            onclick="Girl()"
-          />
+        <img class="Img" src="../img/性别.png" style="float:left;" />
+        <div class="radio-beauty-container">
+          <label class="switch">
+            <span class="font">男 </span>
+            <input type="radio" name="Sex" id="boy" value="男" hidden />
+            <label for="boy" class="radio-beauty"></label>
+            &nbsp;&nbsp;&nbsp;
+          </label>
+          <label class="switch">
+            <span class="font">女 </span>
+            <input type="radio" name="Sex" id="girl" value="女" hidden />
+            <label for="girl" class="radio-beauty"></label>
+          </label>
         </div>
       </div>
 
       <!-- 宿舍 -->
-      <div id="dorm" class="dorm">
-        <img class="Img" src="../img/宿舍.png" />
+      <div id="dorm" class="dorm" style="clear:both;">
+        <img class="Img" src="../img/宿舍.png" style="clear:both;" />
         <div class="content">
           <input
             type="text"
@@ -130,27 +127,25 @@
 
       <!-- 年级 -->
       <div id="grade" class="grade">
-        <img class="Img" src="../img/年级.png" />
-        <div class="content">
-          <span class="font">大一</span>
-          <img
-            src="../img/unchecked.png"
-            id="gradeOne"
-            class="choImg"
-            onclick="GradeOne()"
-          />&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="font">大二</span>
-          <img
-            src="../img/unchecked.png"
-            id="gradeTwo"
-            class="choImg"
-            onclick="GradeTwo()"
-          />
+        <img class="Img" src="../img/年级.png" style="float:left;" />
+        <div class="radio-beauty-container">
+          <label class="switch">
+            <span class="font">大一 </span>
+            <input type="radio" name="Grade" id="one" value="大一" hidden />
+            <label for="one" class="radio-beauty"></label>
+            &nbsp;&nbsp;&nbsp;
+          </label>
+
+          <label class="switch">
+            <span class="font">大二 </span>
+            <input type="radio" name="Grade" id="two" value="大二" hidden />
+            <label for="two" class="radio-beauty"></label>
+          </label>
         </div>
       </div>
 
       <!-- 第一志愿 -->
-      <div id="first" class="first">
+      <div id="first" class="first" style="clear:both;">
         <img class="Img" src="../img/第一志愿.png" />
         <div class="content">
           <select id="firstSelect" class="ban" disabled="disabled">
@@ -188,7 +183,7 @@
             <option value="0">请选择你想去的部门（选填）</option>
             <option value="1" class="daima">技术部-代码组</option>
             <option value="2" class="sheji">技术部-设计组</option>
-            <option value="3" class="beijishu">技术部（北校）</option>
+            <option value="3" class="beijishu">技术部</option>
             <option value="4">策划推广部</option>
             <option value="5">编辑部-原创写手</option>
             <option value="6">编辑部-摄影</option>
@@ -213,27 +208,25 @@
 
       <!-- 调剂 -->
       <div id="adjust" class="adjust">
-        <img class="Img" src="../img/调剂.png" />
-        <div class="content">
-          <span class="font">是</span>
-          <img
-            src="../img/unchecked.png"
-            id="Yes"
-            class="choImg"
-            onclick="Yes()"
-          />&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="font">否</span>
-          <img
-            src="../img/unchecked.png"
-            id="No"
-            class="choImg"
-            onclick="No()"
-          />
+        <img class="Img" src="../img/调剂.png" style="float:left;" />
+        <div class="radio-beauty-container">
+          <label class="switch">
+            <span class="font">是 </span>
+            <input type="radio" name="Adjust" id="yes" value="是" hidden />
+            <label for="yes" class="radio-beauty"></label>
+            &nbsp;&nbsp;&nbsp;
+          </label>
+
+          <label class="switch">
+            <span class="font">否 </span>
+            <input type="radio" name="Adjust" id="no" value="否" hidden />
+            <label for="no" class="radio-beauty"></label>
+          </label>
         </div>
       </div>
 
       <!-- 自我介绍 -->
-      <div id="intro">
+      <div id="intro" style="clear:both;">
         <img class="Img" src="../img/个人介绍.png" />
         <div class="content">
           <textarea
@@ -256,7 +249,7 @@
         <img src="../img/提交.png" onclick="Submit()" id="sub" class="sub" />
       </div>
     </div>
-    
+
     <script type="text/javascript" src="../js/collect-info.js"></script>
   </body>
 </html>

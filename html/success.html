@@ -33,7 +33,6 @@
         margin-left: auto;
         margin-right: auto;
         margin-top: 20%;
-
         width: 50%;
       }
     </style>
@@ -52,7 +51,7 @@
           document.getElementById("body").clientHeight ||
             document.getElementById("body").offsetHeight
         );
-        var num = (height - bodyHeight) / 2 - 0.1*height;
+        var num = (height - bodyHeight) / 2 - 0.1 * height;
         if (num > 0) {
           document.getElementById("body").style.marginTop = num + "px";
         }
@@ -68,7 +67,7 @@
           document.getElementById("body").clientHeight ||
             document.getElementById("body").offsetHeight
         );
-        var num = (height - bodyHeight) / 2 - 0.1*height;
+        var num = (height - bodyHeight) / 2 - 0.1 * height;
         if (num > 0) {
           document.getElementById("body").style.marginTop = num + "px";
         }
@@ -76,11 +75,7 @@
     </script>
   </head>
   <body>
-    <img
-      id="bg"
-      class="bg"
-      src="../img/background.jpg"
-    />
+    <img id="bg" class="bg" src="../img/background.png" />
     <div id="body" class="body" style="height:100%;width:100%">
       <img class="tips" src="../img/报名成功.png" />
       <img class="return" src="../img/返回主页.png" onclick="back()" />

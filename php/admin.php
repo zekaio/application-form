@@ -6,6 +6,7 @@ $db = new db();
 $conn = $db->ConnCheck();
 if(!$conn){
     $error = 1;
+    $result=["error"=>$error];
 }else{
 $error = 0;
 $mysqli = $db->Conn();
@@ -121,4 +122,5 @@ if($choose == "all"){
 }
 $Num = count($arr);
 $result = ["num"=>$Num,"error"=>$error,"arr"=>$arr];
-echo json_encode($result);}
+}
+echo json_encode($result);

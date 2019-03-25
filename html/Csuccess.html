@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>首页</title>
+    <title>报名成功</title>
     <style>
       .bg {
         position: fixed;
@@ -21,36 +21,24 @@
         text-align: center;
         position: relative;
       }
-      .new {
+
+      .tips {
         display: block;
         margin-left: auto;
         margin-right: auto;
         width: 60%;
       }
-      .btn1 {
+      .return {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 5%;
-        width: 50%;
-      }
-      .btn2 {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5%;
+        margin-top: 20%;
         width: 50%;
       }
     </style>
     <script>
-      function introduction() {
-        window.location.href = "introduction.html";
-      }
-      function collectinfo() {
-        window.location.href = "collect-info.html";
-      }
-      function change(){
-        window.location.href = "change.html";
+      function back() {
+        window.location.href = "start-page.html";
       }
       window.onload = function() {
         var height =
@@ -63,7 +51,7 @@
           document.getElementById("body").clientHeight ||
             document.getElementById("body").offsetHeight
         );
-        var num = (height - bodyHeight) / 2;
+        var num = (height - bodyHeight) / 2 - 0.1 * height;
         if (num > 0) {
           document.getElementById("body").style.marginTop = num + "px";
         }
@@ -79,7 +67,7 @@
           document.getElementById("body").clientHeight ||
             document.getElementById("body").offsetHeight
         );
-        var num = (height - bodyHeight) / 2;
+        var num = (height - bodyHeight) / 2 - 0.1 * height;
         if (num > 0) {
           document.getElementById("body").style.marginTop = num + "px";
         }
@@ -88,11 +76,9 @@
   </head>
   <body>
     <img id="bg" class="bg" src="../img/background.png" />
-    <div id="body" class="body">
-      <img class="new" src="../img/主页标题.png" />
-      <img class="btn1" src="../img/部门介绍.png" onclick="introduction()" />
-      <img class="btn2" src="../img/点击报名.png" onclick="collectinfo()" />
-      <img class="btn2" src="../img/查询信息.png" onclick="change()" />
+    <div id="body" class="body" style="height:100%;width:100%">
+      <img class="tips" src="../img/修改成功.png" />
+      <img class="return" src="../img/返回主页.png" onclick="back()" />
     </div>
   </body>
 </html>

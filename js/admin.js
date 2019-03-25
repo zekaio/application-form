@@ -79,7 +79,7 @@ function search() {
   var formdata = new FormData();
   formdata.append("choose", choose);
   formdata.append("data", data);
-  formdata.append("position",position);
+  formdata.append("position", position);
   fetch("../php/admin.php", {
     body: formdata,
     method: "POST"
