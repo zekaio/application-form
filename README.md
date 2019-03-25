@@ -1,7 +1,7 @@
 # 春招报名表
 ## 给大家拜个晚年
 
-Csuccess.html  修改成功后跳转的网页
+Csuccess  修改成功后跳转的网页
 
 admin  内部查询
 
