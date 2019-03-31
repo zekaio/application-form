@@ -5,6 +5,7 @@ var select = document.getElementById("select");
 var choose = "all";
 function Select() {
   var op = select.value;
+  hide();
   switch (parseInt(op)) {
     case 1:
       bumen.style.display = "none";
@@ -32,6 +33,57 @@ function Select() {
       break;
   }
 }
+
+function hide(t) {
+  for (i = 0; i < 6; i++) {
+    document.getElementsByClassName("hid")[i].style.display = "none";
+  }
+  if (t >= 0) {
+    document.getElementsByClassName("hid")[t].style.display = "inline";
+  }
+}
+var zu;
+var co;
+function show() {
+  var op = bumen.value;
+  switch (parseInt(op)) {
+    case 0:
+      hide(0);
+      zu = true;
+      co = "Zjishu";
+      break;
+    case 9:
+      hide(1);
+      zu = true;
+      co = "Zbianji";
+      break;
+    case 8:
+      hide(2);
+      zu = true;
+      co = "Zshipin";
+      break;
+    case 7:
+      hide(3);
+      zu = true;
+      co = "Zjiemu";
+      break;
+    case 3:
+      hide(4);
+      zu = true;
+      co = "Zzongguan";
+      break;
+    case 5:
+      hide(5);
+      zu = true;
+      co = "Zxinwen";
+      break;
+    default:
+      hide(-1);
+      zu = false;
+      break;
+  }
+}
+
 function search() {
   var parent = document.getElementById("msg");
   parent.innerHTML = "";
@@ -66,6 +118,17 @@ function search() {
         var data = bsle[cho].innerText;
         position = "";
       }
+      if (zu) {
+        if (document.getElementById(co).value == 0) {
+          Group = "";
+        } else {
+          var Group = document.getElementById(co)[
+            parseInt(document.getElementById(co).value)
+          ].innerText;
+        }
+      } else {
+        Group = "";
+      }
       break;
 
     case "name":
@@ -80,6 +143,7 @@ function search() {
   formdata.append("choose", choose);
   formdata.append("data", data);
   formdata.append("position", position);
+  formdata.append("group", Group);
   fetch("../php/admin.php", {
     body: formdata,
     method: "POST"

@@ -103,8 +103,8 @@ INSERT INTO `depart` (`id`, `depart`) VALUES
 (16, '人力资源部'),
 (17, '综合管理部-行政管理'),
 (18, '综合管理部-物资财政'),
-(19, '综合管理部-撰文记者'),
-(20, '综合管理部-摄影记者'),
+(19, '综合新闻部-撰文记者'),
+(20, '综合新闻部-摄影记者'),
 (21, '产品运营部');
 
 -- --------------------------------------------------------
@@ -127,7 +127,9 @@ CREATE TABLE `info` (
   `intro` text,
   `firstD` char(10) NOT NULL,
   `secondD` char(10) NOT NULL,
-  `position` char(2) DEFAULT NULL
+  `position` char(2) DEFAULT NULL,
+  `firstG` char(10) NOT NULL,
+  `secondG` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

@@ -190,6 +190,8 @@ function Submit() {
         data.append("secondD", SecondD);
         data.append("adjust", Adjust);
         data.append("intro", Intro);
+        data.append("firstG", FirstG);
+        data.append("secondG", SecondG);
         data.append("position", position);
         fetch(phpSendData, {
           body: data,

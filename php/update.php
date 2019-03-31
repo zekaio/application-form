@@ -25,17 +25,25 @@ if(!$conn){
     $position = $_POST['position'];
     $nameC = $_POST['nameC'];
     $phoneC = $_POST['phoneC'];
+    $firstG = $_POST['firstG'];
+    $secondG = $_POST['secondG'];
     if(!($db->checkPhone($phone))){
         $error = 1;
         $errmsg = "手机号填写错误";
     }elseif(!($db->checkDorm($dorm))){
         $error = 1;
         $errmsg = "宿舍填写错误";
+    }elseif($db->checkCollege($college)){
+        $error = 1;
+        $errmsg = "学院错误";
+    }elseif($db->checkWill($first)||$db->checkWill($second)){
+        $error = 1;
+        $errmsg = "志愿错误";
     }else{
-        $query = "UPDATE info SET `name`=?,`sex`=?,`college`=?,`dorm`=?,`grade`=?,`phone`=?,`first`=?,`second`=?,`adjust`=?,`intro`=?,`firstD`=?,`secondD`=?,`position`=? WHERE (`name`=? AND `phone`=?)";
+        $query = "UPDATE info SET `name`=?,`sex`=?,`college`=?,`dorm`=?,`grade`=?,`phone`=?,`first`=?,`second`=?,`adjust`=?,`intro`=?,`firstD`=?,`secondD`=?,`position`=?,`firstG`=?,`secondG`=? WHERE (`name`=? AND `phone`=?)";
         $stmt = $mysqli->stmt_init();
         $stmt->prepare($query);
-        $stmt->bind_param("sssssssssssssss",$name,$sex,$college,$dorm,$grade,$phone,$first,$second,$adjust,$intro,$firstD,$secondD,$position,$nameC,$phoneC);
+        $stmt->bind_param("sssssssssssssssss",$name,$sex,$college,$dorm,$grade,$phone,$first,$second,$adjust,$intro,$firstD,$secondD,$position,$firstG,$secondG,$nameC,$phoneC);
         $stmt->execute();
         $stmt->close();
         $errmsg = "";

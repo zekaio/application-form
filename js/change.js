@@ -263,6 +263,8 @@ function Submit() {
       data.append("position", position);
       data.append("nameC", nameC);
       data.append("phoneC", phoneC);
+      data.append("firstG", FirstG);
+      data.append("secondG", SecondG);
       fetch(phpUpdate, {
         body: data,
         method: "POST"
