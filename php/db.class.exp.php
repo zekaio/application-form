@@ -64,19 +64,27 @@ class db
         return $check;
     }
     //检验志愿
-    public function checkWill($will){
+    public function checkWill($first,$second){
         $db = new mysqli($this->localhost,$this->username,$this->password,$this->database);
+        $db->set_charset("utf8mb4");        
         $sql = "SELECT `depart` FROM `depart`";
         $res = $db->query($sql);
         $arr = $res->fetch_all();
         $num = sizeof($arr);
-        $check = true;
+        $checkFir = true;
+        $checkSec = true;
         for($i = 0;$i<$num;$i++){
-            if($college == $arr[$i][0]){
-                $check = false;
+            if($first == $arr[$i][0]){
+                $checkFir = false;
+            }
+            if($second == $arr[$i][0]){
+                $checkSec = false;
             }
         }
+        if($second==""){
+            $checkSec = false;
+        }
         $db->close();
-        return $check;
+        return ($checkFir||$checkSec);
     }
 }

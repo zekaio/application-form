@@ -159,54 +159,52 @@ function Submit() {
               document.getElementById("error").innerText = res.errmsg;
               check = false;
               Disabled = "false";
+            } else {
+              if (Second == "请选择你想去的部门（选填）") {
+                Second = "";
+                var SecondD = "";
+                var SecondG = "";
+              } else {
+                var a = Cut(Second);
+                var SecondD = a[0];
+                var SecondG = a[1];
+              }
+              var b = Cut(First);
+              var FirstD = b[0];
+              var FirstG = b[1];
+
+              var data = new FormData();
+              data.append("name", Name);
+              data.append("sex", Sex);
+              data.append("college", College);
+              data.append("dorm", Dorm);
+              data.append("grade", Grade);
+              data.append("phone", Phone);
+              data.append("first", First);
+              data.append("firstD", FirstD);
+              data.append("second", Second);
+              data.append("secondD", SecondD);
+              data.append("adjust", Adjust);
+              data.append("intro", Intro);
+              data.append("firstG", FirstG);
+              data.append("secondG", SecondG);
+              data.append("position", position);
+              fetch(phpSendData, {
+                body: data,
+                method: "POST"
+              })
+                .then(Respone => Respone.json())
+                .then(res => {
+                  if (res.error == 0) {
+                    window.location.href = htmlSuccess;
+                  } else {
+                    document.getElementById("error").innerText = res.errmsg;
+                    Disabled = "false";
+                  }
+                });
             }
           }
         });
-
-      if (check) {
-        if (Second == "请选择你想去的部门（选填）") {
-          Second = "";
-          var SecondD = "";
-          var SecondG = "";
-        } else {
-          var a = Cut(Second);
-          var SecondD = a[0];
-          var SecondG = a[1];
-        }
-        var b = Cut(First);
-        var FirstD = b[0];
-        var FirstG = b[1];
-
-        var data = new FormData();
-        data.append("name", Name);
-        data.append("sex", Sex);
-        data.append("college", College);
-        data.append("dorm", Dorm);
-        data.append("grade", Grade);
-        data.append("phone", Phone);
-        data.append("first", First);
-        data.append("firstD", FirstD);
-        data.append("second", Second);
-        data.append("secondD", SecondD);
-        data.append("adjust", Adjust);
-        data.append("intro", Intro);
-        data.append("firstG", FirstG);
-        data.append("secondG", SecondG);
-        data.append("position", position);
-        fetch(phpSendData, {
-          body: data,
-          method: "POST"
-        })
-          .then(Respone => Respone.json())
-          .then(res => {
-            if (res.error == 0) {
-              window.location.href = htmlSuccess;
-            } else {
-              document.getElementById("error").innerText = res.errmsg;
-              Disabled = "false";
-            }
-          });
-      }
     }
   }
 }
