@@ -1,15 +1,15 @@
 <?php
 header('Content-Type: application/json');
 include("db.class.php");
-// error_reporting(0);
+error_reporting(0);
 $db = new db();
 $conn = $db->ConnCheck();
 if(!$conn){
     $error = 1;
+    $errmsg = "数据库连接失败";
 }else{
     $error = 0;
     $mysqli = $db->Conn();
-
     $name = $_POST['name'];
     $sex = $_POST['sex'];
     $college = $_POST['college'];
@@ -25,16 +25,21 @@ if(!$conn){
     $position = $_POST['position'];
     $nameC = $_POST['nameC'];
     $phoneC = $_POST['phoneC'];
-    $query = "UPDATE info SET `name`=?,`sex`=?,`college`=?,`dorm`=?,`grade`=?,`phone`=?,`first`=?,`second`=?,`adjust`=?,`intro`=?,`firstD`=?,`secondD`=?,`position`=? WHERE (`name`=? AND `phone`=?)";
-    $stmt = $mysqli->stmt_init();
-    if(!$stmt->prepare($query)){
-        $error = 2;
+    if(!($db->checkPhone($phone))){
+        $error = 1;
+        $errmsg = "手机号填写错误";
+    }elseif(!($db->checkDorm($dorm))){
+        $error = 1;
+        $errmsg = "宿舍填写错误";
     }else{
+        $query = "UPDATE info SET `name`=?,`sex`=?,`college`=?,`dorm`=?,`grade`=?,`phone`=?,`first`=?,`second`=?,`adjust`=?,`intro`=?,`firstD`=?,`secondD`=?,`position`=? WHERE (`name`=? AND `phone`=?)";
+        $stmt = $mysqli->stmt_init();
+        $stmt->prepare($query);
         $stmt->bind_param("sssssssssssssss",$name,$sex,$college,$dorm,$grade,$phone,$first,$second,$adjust,$intro,$firstD,$secondD,$position,$nameC,$phoneC);
         $stmt->execute();
         $stmt->close();
-        $error = 0;
+        $errmsg = "";
     }
 }
-$result = ["error"=>$error];
+$result = ["error"=>$error,"errmsg"=>$errmsg];
 echo json_encode($result);

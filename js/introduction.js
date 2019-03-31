@@ -2,15 +2,15 @@ var winHeight = $(window).height();
 $("#background").height(winHeight);
 
 function Skip() {
-  window.location.href = "collect-info.html";
+  window.location.href = htmlCollect;
 }
 function Back() {
-  window.location.href = "start-page.html";
+  window.location.href = htmlStart;
 }
 
 var height = window.getComputedStyle(document.getElementById("long")).height;
 var p = document.getElementsByTagName("p");
-//强行让文字居中（
+//文字居中
 for(i = 0;i<p.length;i++){
   var Height = window.getComputedStyle(p[i]).height;
   var num = (parseInt(height)- parseInt(Height))/2;

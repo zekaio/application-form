@@ -1,11 +1,12 @@
 <?php
 class db
 {
-    public $localhost = "127.0.0.1";
-    public $username = "root";
-    public $password = "ZeKai2068";
-    public $database = "application-form";
 
+    private $localhost = "";
+    private $username = "";
+    private $password = "";
+    private $database = "application-form";
+    
     public function ConnCheck(){
         $db = new mysqli($this->localhost,$this->username,$this->password,$this->database);
         if($db->connect_error){
@@ -14,19 +15,28 @@ class db
         }else{
         return true;
         $db->close();
+        }
     }
-}
-public function Conn(){
-    $db = new mysqli($this->localhost,$this->username,$this->password,$this->database);
-    $db->set_charset("utf8mb4");
-    return $db;
-}
-    public function Query($sql)
-    {
+
+    public function Conn(){
+        $db = new mysqli($this->localhost,$this->username,$this->password,$this->database);
+        $db->set_charset("utf8mb4");
+        return $db;
+    }
+
+    public function Query($sql){
         $db = new mysqli($this->localhost,$this->username,$this->password,$this->database);
         $db->set_charset("utf8mb4");
         $result = $db->query($sql);
-        return $result;
         $db->close();
+        return $result;
+    }
+
+    public function checkPhone($phone){
+        return preg_match('/^1[0-9]{10}$/',$phone);
+    }
+
+    public function checkDorm($dorm){
+        return preg_match('/^C([1-9]|1[0-9]) *(东|西)? *-? *[1-9][0-9]{2} *$/i',$dorm);
     }
 }

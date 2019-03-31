@@ -8,6 +8,7 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>首页</title>
+    <script src="../js/conf.js"></script>
     <style>
       .bg {
         position: fixed;
@@ -42,49 +43,7 @@
         width: 50%;
       }
     </style>
-    <script>
-      function introduction() {
-        window.location.href = "introduction.html";
-      }
-      function collectinfo() {
-        window.location.href = "collect-info.html";
-      }
-      function change(){
-        window.location.href = "change.html";
-      }
-      window.onload = function() {
-        var height =
-          document.documentElement.clientHeight ||
-          document.documentElement.offsetHeight;
-        var width =
-          document.documentElement.clientWidth ||
-          document.documentElement.offsetWidth;
-        var bodyHeight = parseInt(
-          document.getElementById("body").clientHeight ||
-            document.getElementById("body").offsetHeight
-        );
-        var num = (height - bodyHeight) / 2;
-        if (num > 0) {
-          document.getElementById("body").style.marginTop = num + "px";
-        }
-      };
-      window.onresize = function() {
-        var height =
-          document.documentElement.clientHeight ||
-          document.documentElement.offsetHeight;
-        var width =
-          document.documentElement.clientWidth ||
-          document.documentElement.offsetWidth;
-        var bodyHeight = parseInt(
-          document.getElementById("body").clientHeight ||
-            document.getElementById("body").offsetHeight
-        );
-        var num = (height - bodyHeight) / 2;
-        if (num > 0) {
-          document.getElementById("body").style.marginTop = num + "px";
-        }
-      };
-    </script>
+
   </head>
   <body>
     <img id="bg" class="bg" src="../img/background.png" />
@@ -94,5 +53,6 @@
       <img class="btn2" src="../img/点击报名.png" onclick="collectinfo()" />
       <img class="btn2" src="../img/查询信息.png" onclick="change()" />
     </div>
+    <script type="text/javascript" src="../js/start-page.js"></script>
   </body>
 </html>

@@ -89,7 +89,18 @@ function search() {
       if (res.error == 0) {
         var div = document.createElement("div");
         div.className = "none";
-        div.innerText = "共" + res.num + "人";
+        if (choose == "bumen") {
+          div.innerText =
+            "共" +
+            res.num +
+            "人，第一志愿" +
+            res.fir +
+            "人，第二志愿" +
+            res.sec +
+            "人";
+        } else {
+          div.innerText = "共" + res.num + "人";
+        }
         parent.appendChild(div);
 
         var table = document.getElementById("table");
@@ -141,15 +152,31 @@ function search() {
           line_break.innerHTML = "</br></br></br>";
           tr.appendChild(line_break);
         }
-      } else if (res.error == 1) {
-        var div = document.createElement("div");
-        div.className = "none";
-        div.innerText = "数据库连接错误";
-        parent.appendChild(div);
+
+        //导出excel
+        var oHtml = document.getElementById("table").outerHTML;
+        var excelHtml = `
+        <html>
+          <head>
+            <meta charset='utf-8' />
+          </head>
+          <body>
+            ${oHtml}
+          </body>
+        </html>
+        `;
+        var excelBlob = new Blob([excelHtml], {
+          type: "application/vnd.ms-excel"
+        });
+        var oA = document.createElement("a");
+        oA.href = URL.createObjectURL(excelBlob);
+        oA.download = "内部查询.xls";
+        oA.innerText = "下载excel";
+        parent.appendChild(oA);
       } else {
         var div = document.createElement("div");
         div.className = "none";
-        div.innerText = "应该不会出现这个错误";
+        div.innerText = res.errmsg;
         parent.appendChild(div);
       }
     });
