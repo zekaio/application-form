@@ -36,7 +36,7 @@ if(!$conn){
     }elseif($db->checkCollege($college)){
         $error = 1;
         $errmsg = "学院错误";
-    }elseif($db->checkWill($first)||$db->checkWill($second)){
+    }elseif($db->checkWill($first)||($second!=""&&checkWill($second))){
         $error = 1;
         $errmsg = "志愿错误";
     }else{

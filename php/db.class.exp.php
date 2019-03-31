@@ -10,10 +10,11 @@ class db
         $db = new mysqli($this->localhost,$this->username,$this->password,$this->database);
         if($db->connect_error){
             $db->set_charset("utf8mb4");
+            $db->close();
             return false;
         }else{
-        return true;
         $db->close();
+        return true;
         }
     }
 
@@ -59,6 +60,7 @@ class db
                 $check = false;
             }
         }
+        $db->close();
         return $check;
     }
     //检验志愿
@@ -74,6 +76,7 @@ class db
                 $check = false;
             }
         }
+        $db->close();
         return $check;
     }
 }
