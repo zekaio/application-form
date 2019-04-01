@@ -219,12 +219,18 @@ function search() {
 
         //导出excel
         var oHtml = document.getElementById("table").outerHTML;
+        var numHtml = document.getElementById("msg").outerHTML;
         var excelHtml = `
         <html>
           <head>
             <meta charset='utf-8' />
+            <style>
+              body{font-size:50px;}
+              table{font-size:32px;}
+            </style>
           </head>
           <body>
+            ${numHtml}
             ${oHtml}
           </body>
         </html>
@@ -234,7 +240,19 @@ function search() {
         });
         var oA = document.createElement("a");
         oA.href = URL.createObjectURL(excelBlob);
-        oA.download = "内部查询.xls";
+        if (choose == "all") {
+          oA.download = "所有信息.xls";
+        } else if (choose == "name") {
+          oA.download = "姓名：" + data + ".xls";
+        } else if (choose == "phone") {
+          oA.download = "手机号：" + data + ".xls";
+        } else if (choose == "bumen") {
+          if (Group == "") {
+            oA.download = data + ".xls";
+          } else {
+            oA.download = data + "-" + Group + ".xls";
+          }
+        }
         oA.innerText = "下载excel";
         parent.appendChild(oA);
       } else {

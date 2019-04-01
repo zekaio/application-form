@@ -96,10 +96,10 @@ if(!$conn){
                 $num = sizeof($array);
                 $fir = $num;//第一志愿是的人数
 
-                $query = "SELECT * FROM info WHERE `secondD`=? AND `firstD`!=?  AND `secondG`=?" ;
+                $query = "SELECT * FROM info WHERE `secondD`=? AND `secondG`=? AND `firstG`!=?";
                 $stmt = $mysqli->stmt_init();
                 $stmt->prepare($query);
-                $stmt->bind_param("sss",$data,$data,$group);
+                $stmt->bind_param("sss",$data,$group,$group);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_array(MYSQLI_NUM)){
@@ -124,10 +124,10 @@ if(!$conn){
                 $num = sizeof($array);
                 $fir = $num;
 
-                $query = "SELECT * FROM info WHERE `firstD`!=? AND `secondD`=? AND `position`=?  AND `secondG`=?";
+                $query = "SELECT * FROM info WHERE  `firstG`!=? AND `secondD`=? AND `position`=?  AND `secondG`=?";
                 $stmt = $mysqli->stmt_init();
                 $stmt->prepare($query);
-                $stmt->bind_param("ssss",$data,$data,$position,$group);
+                $stmt->bind_param("ssss",$group,$data,$position,$group);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_array(MYSQLI_NUM)){
