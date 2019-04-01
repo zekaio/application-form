@@ -8,6 +8,11 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
     />
     <title>内部查询</title>
+    <script src="https://cdn.bootcss.com/xlsx/0.14.1/xlsx.core.min.js"></script>
+    <script src="https://cdn.bootcss.com/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+    <script src="https://cdn.bootcss.com/TableExport/5.2.0/js/tableexport.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
     <script>
         var system = {};
         var p = navigator.platform;
@@ -33,6 +38,9 @@
       <div><h1>内部查询</h1></div>
       <div><p id="tip"></p></div>
       <div><p>（志愿中单技术部指北校技术部）</p></div>
+      <div><p>（office用户点第一个下载excel体验更佳）</p></div>
+      <div><p>（wps只能用第二个(export to xlsx),请手动把单元格拉长）</p></div>
+
     <div>
       <select id="select" onchange="Select()">
         <option value="1" selected>所有信息</option>
@@ -146,6 +154,7 @@
           <col width="8%">
           <col width="24%">
         </colgroup>
+        <thead>
         <tr>
           <th>姓名</th>
           <th>性别</th>
@@ -158,6 +167,9 @@
           <th>服从调剂</th>
           <th>自我介绍</th>
         </tr>
+        </thead>
+        <tfoot></tfoot>
+        <tbody id="tbody"></tbody>
       </table>
     </div>
   </div>

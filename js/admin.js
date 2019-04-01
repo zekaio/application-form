@@ -84,6 +84,21 @@ function show() {
   }
 }
 
+var tableExp = TableExport($("#table"), {
+  headers: true, // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
+  footers: true, // (Boolean), display table footers (th or td elements) in the <tfoot>, (default: false)
+  formats: ["xlsx"], // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+  filename: "内部查询", // (id, String), filename for the downloaded file, (default: 'id')
+  bootstrap: false, // (Boolean), style buttons using bootstrap, (default: true)
+  exportButtons: true, // (Boolean), automatically generate the built-in export buttons for each of the specified formats (default: true)
+  position: "top", // (top, bottom), position of the caption element relative to table, (default: 'bottom')
+  ignoreRows: null, // (Number, Number[]), row indices to exclude from the exported file(s) (default: null)
+  ignoreCols: null, // (Number, Number[]), column indices to exclude from the exported file(s) (default: null)
+  trimWhitespace: true, // (Boolean), remove all leading/trailing newlines, spaces, and tabs from cell text in the exported file(s) (default: false)
+  RTL: false, // (Boolean), set direction of the worksheet to right-to-left (default: false)
+  sheetname: "id" // (id, String), sheet name for the exported spreadsheet, (default: 'id')
+});
+
 function search() {
   var parent = document.getElementById("msg");
   parent.innerHTML = "";
@@ -168,9 +183,10 @@ function search() {
         parent.appendChild(div);
 
         var table = document.getElementById("table");
+        var tbody = document.getElementById("tbody");
         for (i = 0; i < res.arr.length; i++) {
           var tr = document.createElement("tr");
-          table.appendChild(tr);
+          tbody.appendChild(tr);
           //姓名
           var name = document.createElement("td");
           name.innerText = res.arr[i].name;
@@ -216,7 +232,7 @@ function search() {
           line_break.innerHTML = "</br></br></br>";
           tr.appendChild(line_break);
         }
-
+        tableExp.reset();
         //导出excel
         var oHtml = document.getElementById("table").outerHTML;
         var numHtml = document.getElementById("msg").outerHTML;
@@ -241,18 +257,19 @@ function search() {
         var oA = document.createElement("a");
         oA.href = URL.createObjectURL(excelBlob);
         if (choose == "all") {
-          oA.download = "所有信息.xls";
+          var fileName = "所有信息";
         } else if (choose == "name") {
-          oA.download = "姓名：" + data + ".xls";
+          var fileName = "姓名：" + data;
         } else if (choose == "phone") {
-          oA.download = "手机号：" + data + ".xls";
+          var fileName = "手机号：" + data;
         } else if (choose == "bumen") {
           if (Group == "") {
-            oA.download = data + ".xls";
+            var fileName = data;
           } else {
-            oA.download = data + "-" + Group + ".xls";
+            var fileName = data + "-" + Group;
           }
         }
+        oA.download = fileName + ".xls";
         oA.innerText = "下载excel";
         parent.appendChild(oA);
       } else {
